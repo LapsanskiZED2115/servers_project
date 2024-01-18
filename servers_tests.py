@@ -48,22 +48,22 @@ class ClientTest(unittest.TestCase):
             self.assertEqual(5, client.get_total_price(2))
 
     def test_get_total_price_handles_exception_case1(self):
-        products1 = [Product('SS16', 41), Product('IO1223', 95), Product('POPP777', 135)]
+        products = [Product('SS16', 41), Product('IO1223', 95), Product('POPP777', 135)]
 
         for server_type in server_types:
             with self.subTest(server_type=server_type):
-                server = server_type(products1)
+                server = server_type(products)
                 client = Client(server)
                 total_price = client.get_total_price(10)
                 self.assertIsNone(total_price)
 
     def test_get_total_price_handles_exception_case2(self):
-        products2 = [Product('sS22', 13), Product('PG05', 12), Product('PS235', 35), Product('WV245', 69),
+        products = [Product('sS22', 13), Product('PG05', 12), Product('PS235', 35), Product('WV245', 69),
                     Product('Ck13', 15), Product('KN203', 86), Product('PL25', 2.5), Product('Rw100', 14)]
 
         for server_type in server_types:
             with self.subTest(server_type=server_type):
-                server = server_type(products2)
+                server = server_type(products)
                 client = Client(server)
                 total_price = client.get_total_price(2)
                 self.assertIsNone(total_price)
